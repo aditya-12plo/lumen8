@@ -13,13 +13,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 {
     use Authenticatable, Authorizable, HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $primaryKey = 'user_id';
     protected $fillable = [
-        'name', 'email',
+        'name', 'phone', 'email','mobile','email_verified_at',
     ];
 
     /**
@@ -28,6 +24,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $hidden = [
-        'password',
+        'password','remember_token',
     ];
 }
