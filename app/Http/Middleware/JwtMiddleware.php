@@ -22,7 +22,7 @@ class JwtMiddleware
 				->setStatusCode(401);
         }
         try {
-            $credentials = JWT::decode($token, env('APP_KEY'), ['HS256']);
+            $credentials = JWT::decode($token, env('JWT_SECRET'), ['HS256']);
         } catch(ExpiredException $e) {
 			return response()
 				->json(['status'=>400 ,'datas' => [], 'errors' => ['message' => "Provided token is expired."]])

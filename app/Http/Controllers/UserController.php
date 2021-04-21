@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 
-class ExampleController extends Controller
+class UserController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -20,11 +20,10 @@ class ExampleController extends Controller
         //
     }
 
-    public function index(Request $request){
-        $datas                  = $request->all();
-        $datas["password"]      = Hash::make('12345');
+    public function profile(Request $request){
+        $auth					= $request->auth;
         return response()
-        ->json(['status'=>200 ,'datas' => $datas, 'errors' => []])
+        ->json(['status'=>200 ,'datas' => $auth, 'errors' => []])
         ->withHeaders([
           'Content-Type'          => 'application/json',
           ])
